@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NepalMap } from 'nepal-district-map';
 import { DISTRICTS } from 'nepal-district-map/data';
+import hydroImg from '../assets/hydro.png';
 
 // Fixed Hydropower locations
 const MARKERS_DATA = [
@@ -74,22 +75,29 @@ const Nepal: React.FC = () => {
         {/* Tooltip positioned near the hovered marker */}
         {hoveredMark && (
           <div 
-            className="absolute bg-white p-4 rounded-xl shadow-2xl border border-gray-100 z-10 w-64 pointer-events-none transition-all duration-200"
+            className="absolute bg-white rounded-xl shadow-2xl border border-gray-100 z-10 w-64 pointer-events-none overflow-hidden transition-all duration-200"
             style={{ 
               left: `calc(${(hoveredMark.cx / 1200) * 100}% + 15px)`, 
               top: `calc(${(hoveredMark.cy / 800) * 100}% - 40px)` 
             }}
           >
-            <div className="flex items-center space-x-2 mb-2 border-b border-gray-100 pb-2">
-              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-              <h3 className="font-bold text-gray-900 leading-tight">{hoveredMark.name}</h3>
+            <img 
+              src={hydroImg} 
+              alt="Hydropower Station" 
+              className="w-full h-32 object-cover" 
+            />
+            <div className="p-4">
+              <div className="flex items-center space-x-2 mb-2 border-b border-gray-100 pb-2">
+                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                <h3 className="font-bold text-gray-900 leading-tight">{hoveredMark.name}</h3>
+              </div>
+              <p className="text-sm text-gray-500 font-medium">
+                <span className="text-gray-400">District:</span> {hoveredMark.district}
+              </p>
+              <p className="text-sm text-gray-500 font-medium mt-1">
+                <span className="text-gray-400">Capacity:</span> {hoveredMark.capacity} MW
+              </p>
             </div>
-            <p className="text-sm text-gray-500 font-medium">
-              <span className="text-gray-400">District:</span> {hoveredMark.district}
-            </p>
-            <p className="text-sm text-gray-500 font-medium mt-1">
-              <span className="text-gray-400">Capacity:</span> {hoveredMark.capacity} MW
-            </p>
           </div>
         )}
       </div>
