@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "d3-geo": "^3.1.1",
+    "nepal-district-map": "^1.1.0",
+    "nepalmap": "^1.0.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.2"
