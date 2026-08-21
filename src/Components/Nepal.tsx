@@ -33,7 +33,7 @@ const Nepal: React.FC = () => {
       <div className="mb-6 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">Nepal Map</h2>
       </div>
-      
+
       <div className="w-full max-w-5xl relative">
         <div style={{
           filter: `
@@ -54,13 +54,13 @@ const Nepal: React.FC = () => {
         </div>
 
         {/* SVG Overlay for markers */}
-        <svg 
-          viewBox="0 0 1200 800" 
+        <svg
+          viewBox="0 0 1200 800"
           className="absolute top-0 left-0 w-full h-full pointer-events-none"
         >
           {MARKERS.map((mark) => (
-            <g 
-              key={mark.id} 
+            <g
+              key={mark.id}
               className="pointer-events-auto cursor-pointer transition-transform hover:scale-125 origin-center"
               style={{ transformOrigin: `${mark.cx}px ${mark.cy}px` }}
               onMouseEnter={() => setHoveredMark(mark)}
@@ -74,17 +74,17 @@ const Nepal: React.FC = () => {
 
         {/* Tooltip positioned near the hovered marker */}
         {hoveredMark && (
-          <div 
+          <div
             className="absolute bg-white rounded-xl shadow-2xl border border-gray-100 z-10 w-64 pointer-events-none overflow-hidden transition-all duration-200"
-            style={{ 
-              left: `calc(${(hoveredMark.cx / 1200) * 100}% + 15px)`, 
-              top: `calc(${(hoveredMark.cy / 800) * 100}% - 40px)` 
+            style={{
+              left: `calc(${(hoveredMark.cx / 1200) * 100}% + 15px)`,
+              top: `calc(${(hoveredMark.cy / 800) * 100}% - 40px)`
             }}
           >
-            <img 
-              src={hydroImg} 
-              alt="Hydropower Station" 
-              className="w-full h-32 object-cover" 
+            <img
+              src={hydroImg}
+              alt="Hydropower Station"
+              className="w-full h-32 object-cover"
             />
             <div className="p-4">
               <div className="flex items-center space-x-2 mb-2 border-b border-gray-100 pb-2">
@@ -95,7 +95,7 @@ const Nepal: React.FC = () => {
                 <span className="text-gray-400">District:</span> {hoveredMark.district}
               </p>
               <p className="text-sm text-gray-500 font-medium mt-1">
-                <span className="text-gray-400">Capacity:</span> {hoveredMark.capacity} MW
+                <span className="text-gray-400">:</span> {hoveredMark.capacity} MW
               </p>
             </div>
           </div>
