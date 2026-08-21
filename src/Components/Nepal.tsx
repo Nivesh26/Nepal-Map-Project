@@ -95,7 +95,7 @@ const Nepal: React.FC = () => {
                 <span className="text-gray-400">District:</span> {hoveredMark.district}
               </p>
               <p className="text-sm text-gray-500 font-medium mt-1">
-                <span className="text-gray-400">:</span> {hoveredMark.capacity} MW
+                <span className="text-gray-400">Capacity:</span> {hoveredMark.capacity} MW
               </p>
             </div>
           </div>
