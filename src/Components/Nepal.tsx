@@ -120,6 +120,19 @@ const Nepal: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Hydropower Projects List at the Bottom */}
+      <div className="w-full max-w-7xl mt-10 pt-6 border-t border-gray-200">
+        <h3 className="font-bold text-gray-900 text-lg mb-4">Hydropower Projects</h3>
+        <div className="flex flex-wrap gap-3">
+          {MARKERS_DATA.map((project, idx) => (
+            <div key={idx} className="flex items-center gap-2.5 bg-white border border-gray-200 px-4 py-2.5 rounded-xl shadow-sm">
+              <span className="w-3 h-3 bg-red-500 rounded-full inline-block flex-shrink-0"></span>
+              <span className="text-sm font-semibold text-gray-800">{project.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
