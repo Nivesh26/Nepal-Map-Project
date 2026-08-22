@@ -60,18 +60,23 @@ const Nepal: React.FC = () => {
             viewBox="0 0 1200 800" 
             className="absolute top-0 left-0 w-full h-full pointer-events-none"
           >
-            {MARKERS.map((mark) => (
-              <g 
-                key={mark.id} 
-                className="pointer-events-auto cursor-pointer transition-transform hover:scale-125 origin-center"
-                style={{ transformOrigin: `${mark.cx}px ${mark.cy}px` }}
-                onMouseEnter={() => setHoveredMark(mark)}
-                onMouseLeave={() => setHoveredMark(null)}
-              >
-                <circle cx={mark.cx} cy={mark.cy} r={10} fill="#ef4444" stroke="white" strokeWidth={3} />
-                <circle cx={mark.cx} cy={mark.cy} r={4} fill="white" />
-              </g>
-            ))}
+            {MARKERS.map((mark) => {
+              const isHovered = hoveredMark?.id === mark.id;
+              return (
+                <g 
+                  key={mark.id} 
+                  className={`pointer-events-auto cursor-pointer transition-transform duration-200 origin-center ${
+                    isHovered ? 'scale-150' : 'hover:scale-125'
+                  }`}
+                  style={{ transformOrigin: `${mark.cx}px ${mark.cy}px` }}
+                  onMouseEnter={() => setHoveredMark(mark)}
+                  onMouseLeave={() => setHoveredMark(null)}
+                >
+                  <circle cx={mark.cx} cy={mark.cy} r={10} fill="#ef4444" stroke="white" strokeWidth={3} />
+                  <circle cx={mark.cx} cy={mark.cy} r={4} fill="white" />
+                </g>
+              );
+            })}
           </svg>
 
           {/* Tooltip positioned near the hovered marker */}
@@ -125,12 +130,27 @@ const Nepal: React.FC = () => {
       <div className="w-full max-w-7xl mt-10 pt-6 border-t border-gray-200">
         <h3 className="font-bold text-gray-900 text-lg mb-4">Hydropower Projects</h3>
         <div className="flex flex-wrap gap-3">
-          {MARKERS_DATA.map((project, idx) => (
-            <div key={idx} className="flex items-center gap-2.5 bg-white border border-gray-200 px-4 py-2.5 rounded-xl shadow-sm">
-              <span className="w-3 h-3 bg-red-500 rounded-full inline-block flex-shrink-0"></span>
-              <span className="text-sm font-semibold text-gray-800">{project.name}</span>
-            </div>
-          ))}
+          {MARKERS_DATA.map((project, idx) => {
+            const mark = MARKERS[idx];
+            const isHovered = hoveredMark?.id === mark.id;
+            return (
+              <div 
+                key={idx} 
+                className={`flex items-center gap-2.5 bg-white border px-4 py-2.5 rounded-xl shadow-sm cursor-pointer transition-all duration-200 ${
+                  isHovered 
+                    ? 'border-red-500 ring-2 ring-red-100 scale-105 bg-red-50/40' 
+                    : 'border-gray-200 hover:border-red-300 hover:shadow-md'
+                }`}
+                onMouseEnter={() => setHoveredMark(mark)}
+                onMouseLeave={() => setHoveredMark(null)}
+              >
+                <span className={`w-3 h-3 bg-red-500 rounded-full inline-block flex-shrink-0 transition-transform ${
+                  isHovered ? 'scale-125' : ''
+                }`}></span>
+                <span className="text-sm font-semibold text-gray-800">{project.name}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
