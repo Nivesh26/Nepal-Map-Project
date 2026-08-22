@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { NepalMap } from 'nepal-district-map';
 import { DISTRICTS, PROVINCES } from 'nepal-district-map/data';
-import hydroImg from '../assets/hydro.png';
 
-// Fixed Hydropower locations
+import upperTamakoshiImg from '../assets/upper_tamakoshi.jpg';
+import kaliGandakiImg from '../assets/kali_gandaki.jpg';
+import middleMarsyangdiImg from '../assets/middle_marsyangdi.jpg';
+import chilimeImg from '../assets/chilime.jpg';
+import kulekhaniImg from '../assets/kulekhani.jpg';
+
+// Fixed Hydropower locations with distinct images for each project
 const MARKERS_DATA = [
-  { name: 'Upper Tamakoshi Hydropower', district: 'Dolakha', capacity: 456 },
-  { name: 'Kali Gandaki A Hydropower', district: 'Syangja', capacity: 144 },
-  { name: 'Middle Marsyangdi Hydropower', district: 'Lamjung', capacity: 70 },
-  { name: 'Chilime Hydropower', district: 'Rasuwa', capacity: 22 },
-  { name: 'Kulekhani I Hydropower', district: 'Makwanpur', capacity: 60 }
+  { name: 'Upper Tamakoshi Hydropower', district: 'Dolakha', capacity: 456, image: upperTamakoshiImg },
+  { name: 'Kali Gandaki A Hydropower', district: 'Syangja', capacity: 144, image: kaliGandakiImg },
+  { name: 'Middle Marsyangdi Hydropower', district: 'Lamjung', capacity: 70, image: middleMarsyangdiImg },
+  { name: 'Chilime Hydropower', district: 'Rasuwa', capacity: 22, image: chilimeImg },
+  { name: 'Kulekhani I Hydropower', district: 'Makwanpur', capacity: 60, image: kulekhaniImg }
 ];
 
 // Map fixed data to their district coordinates
@@ -20,6 +25,7 @@ const MARKERS = MARKERS_DATA.map((data, index) => {
     name: data.name,
     district: data.district,
     capacity: data.capacity,
+    image: data.image,
     cx: districtObj.cx,
     cy: districtObj.cy,
   };
@@ -89,8 +95,8 @@ const Nepal: React.FC = () => {
               }}
             >
               <img 
-                src={hydroImg} 
-                alt="Hydropower Station" 
+                src={hoveredMark.image} 
+                alt={hoveredMark.name} 
                 className="w-full h-32 object-cover" 
               />
               <div className="p-4">
