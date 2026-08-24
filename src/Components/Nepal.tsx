@@ -37,7 +37,7 @@ const Nepal: React.FC = () => {
   return (
     <div className="flex flex-col items-center p-6 sm:p-8 w-full min-h-screen bg-white">
       <div className="mb-6 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Nepal Map</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">Nepal Hydropower Map</h2>
       </div>
       
       <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full max-w-7xl">
