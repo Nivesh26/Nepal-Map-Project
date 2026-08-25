@@ -8,6 +8,50 @@ import middleMarsyangdiImg from '../assets/middle_marsyangdi.jpg';
 import chilimeImg from '../assets/chilime.jpg';
 import kulekhaniImg from '../assets/kulekhani.jpg';
 
+import team1Img from '../assets/team1.jpg';
+import team2Img from '../assets/team2.jpg';
+import team3Img from '../assets/team3.jpg';
+import team4Img from '../assets/team4.jpg';
+import team5Img from '../assets/team5.jpg';
+
+const TEAM_MEMBERS = [
+  {
+    id: 1,
+    name: 'Er. Ankit Sharma',
+    role: 'Lead Hydropower Engineer',
+    bio: 'Over 12 years of experience in high-altitude tunnel engineering, structural design, and civil project execution across Himalayan hydro basins.',
+    image: team1Img,
+  },
+  {
+    id: 2,
+    name: 'Sujata Thapa',
+    role: 'Senior GIS & Spatial Analyst',
+    bio: 'Specialist in river basin spatial mapping, remote sensing, geographic information systems, and topographical terrain modeling.',
+    image: team2Img,
+  },
+  {
+    id: 3,
+    name: 'Er. Bikram Rai',
+    role: 'Chief Energy Planner',
+    bio: 'Expert in national power grid planning, feasibility studies, investment strategy, and large-scale renewable energy infrastructure.',
+    image: team3Img,
+  },
+  {
+    id: 4,
+    name: 'Pooja Shrestha',
+    role: 'Sustainability Analyst',
+    bio: 'Focuses on environmental impact assessments (EIA), riverine ecology preservation, and community economic equity integration.',
+    image: team4Img,
+  },
+  {
+    id: 5,
+    name: 'Er. Dipendra Adhikari',
+    role: 'Grid Operations Manager',
+    bio: 'Specializes in real-time transmission grid synchronization, peak-load dispatch management, and cross-border power trading systems.',
+    image: team5Img,
+  },
+];
+
 // Fixed Hydropower locations with distinct images for each project
 const MARKERS_DATA = [
   { name: 'Upper Tamakoshi Hydropower', district: 'Dolakha', capacity: 456, image: upperTamakoshiImg },
@@ -194,6 +238,45 @@ const Nepal: React.FC = () => {
                 Looking toward the future, Nepal is rapidly positioning itself as a clean energy hub in South Asia. With major gigawatt-scale projects under construction and power trade agreements established with India and Bangladesh, Nepal is expanding its role from domestic electrification to regional cross-border green power export. By substituting fossil-fuel energy across the region during peak production months, Nepal’s hydropower journey demonstrates how sustainable natural resource development can power national prosperity while supporting broader regional decarbonization goals.
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Meet Our Team Section */}
+        <div className="mt-12 pt-8 border-t border-gray-200/80">
+          <div className="text-center mb-8">
+            <span className="text-xs font-bold uppercase tracking-widest text-red-600 bg-red-50 px-3 py-1 rounded-full inline-block mb-3">
+              Our Experts
+            </span>
+            <h3 className="text-3xl font-bold text-gray-900">
+              Meet Our Team
+            </h3>
+            <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-sm sm:text-base">
+              The dedicated engineers, GIS specialists, and environmental analysts driving Nepal's hydro potential and spatial project mapping.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {TEAM_MEMBERS.map((member) => (
+              <div 
+                key={member.id} 
+                className="group bg-white border border-gray-200/80 rounded-2xl p-4 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col items-center text-center"
+              >
+                <div className="w-full aspect-square overflow-hidden rounded-xl mb-4 bg-gray-100">
+                  <img 
+                    src={member.image} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <h4 className="font-bold text-gray-900 text-base mb-1">{member.name}</h4>
+                <span className="text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-0.5 rounded-full mb-2">
+                  {member.role}
+                </span>
+                <p className="text-xs text-gray-500 leading-relaxed mt-1">
+                  {member.bio}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
