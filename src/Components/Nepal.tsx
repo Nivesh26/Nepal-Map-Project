@@ -158,6 +158,44 @@ const Nepal: React.FC = () => {
             );
           })}
         </div>
+
+        {/* Detailed Projects & Experiences Section */}
+        <div className="mt-12 pt-8 border-t border-gray-200/80">
+          <div className="bg-slate-50 border border-slate-200/80 rounded-3xl p-6 sm:p-10 shadow-sm">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-2.5 h-8 bg-red-500 rounded-full"></div>
+              <h3 className="text-2xl font-bold text-gray-900">
+                Hydropower Development & Project Experiences in Nepal
+              </h3>
+            </div>
+
+            <div className="space-y-6 text-gray-700 leading-relaxed text-base sm:text-lg">
+              <p className="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/60 shadow-xs">
+                Nepal possesses an estimated theoretical hydropower potential of over 83,000 MW, with roughly 42,000 MW recognized as technically and economically feasible. Fed by perpetual Himalayan snowmelt and major river basins including the Koshi, Gandaki, and Karnali, the country has undergone a remarkable transformation from chronic power outages to energy self-sufficiency. The strategic development of both run-of-river and storage facilities across diverse provinces has modernized the national grid, serving as the primary engine for industrial growth and rural electrification.
+              </p>
+
+              <p className="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/60 shadow-xs">
+                Among the landmark undertakings highlighted on this map, the <strong className="text-gray-900 font-semibold">Upper Tamakoshi Hydropower Project (456 MW)</strong> in Dolakha stands out as a historic milestone of national engineering capability. Financed primarily through domestic financial institutions and public mobilization, its execution required excavating extensive underground caverns, penstock shafts, and complex tunneling through intricate Himalayan mountain geology. Similarly, the <strong className="text-gray-900 font-semibold">Kali Gandaki A Hydropower Plant (144 MW)</strong> in Syangja serves as a vital baseload contributor, utilizing sophisticated desilting basins to manage high sediment loads transported by seasonal monsoon flows.
+              </p>
+
+              <p className="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/60 shadow-xs">
+                Constructing and operating large-scale water infrastructure in Nepal's steep mountain topography involves overcoming steep technical and geological hurdles. Engineering teams face fragile fault zones, landslide-prone slopes, and extreme seasonal river discharge variations. Lessons gained from projects across Rasuwa, Lamjung, and Makwanpur have driven significant innovations in sediment-resistant hydro turbines, underground powerhouse designs, and climate-resilient water diversion structures, establishing Nepal as an internationally recognized case study in high-altitude hydro engineering.
+              </p>
+
+              <p className="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/60 shadow-xs">
+                While run-of-river projects produce peak output during wet summer months, maintaining grid stability during the dry winter season relies heavily on reservoir storage plants like <strong className="text-gray-900 font-semibold">Kulekhani I (60 MW)</strong>. Functioning as Nepal's principal storage facility, Kulekhani provides essential peak-load management and voltage stabilization. Complementing technical stability, community-driven models such as <strong className="text-gray-900 font-semibold">Chilime Hydropower (22 MW)</strong> pioneered local economic equity by allocating equity shares directly to project-affected residents, creating a sustainable framework for grassroots investment and public participation.
+              </p>
+
+              <p className="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/60 shadow-xs">
+                Beyond electricity generation, hydropower projects deliver transformative socio-economic benefits to remote mountain communities. Building access roads, transmission corridors, and bridges to reach project sites connects isolated rural settlements to national markets, healthcare, and education centers. Modern project frameworks actively integrate environmental safeguard protocols, compensatory reforestation, and watershed management to protect riverine ecosystems and preserve local biodiversity alongside energy expansion.
+              </p>
+
+              <p className="bg-white p-5 sm:p-6 rounded-2xl border border-slate-200/60 shadow-xs">
+                Looking toward the future, Nepal is rapidly positioning itself as a clean energy hub in South Asia. With major gigawatt-scale projects under construction and power trade agreements established with India and Bangladesh, Nepal is expanding its role from domestic electrification to regional cross-border green power export. By substituting fossil-fuel energy across the region during peak production months, Nepal’s hydropower journey demonstrates how sustainable natural resource development can power national prosperity while supporting broader regional decarbonization goals.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
