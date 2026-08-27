@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { NepalMap } from 'nepal-district-map';
 import { DISTRICTS, PROVINCES } from 'nepal-district-map/data';
 
@@ -54,22 +55,23 @@ const TEAM_MEMBERS = [
 
 // Fixed Hydropower locations with distinct images for each project
 const MARKERS_DATA = [
-  { name: 'Upper Tamakoshi Hydropower', district: 'Dolakha', capacity: 456, image: upperTamakoshiImg },
-  { name: 'Kali Gandaki A Hydropower', district: 'Syangja', capacity: 144, image: kaliGandakiImg },
-  { name: 'Middle Marsyangdi Hydropower', district: 'Lamjung', capacity: 70, image: middleMarsyangdiImg },
-  { name: 'Chilime Hydropower', district: 'Rasuwa', capacity: 22, image: chilimeImg },
-  { name: 'Kulekhani I Hydropower', district: 'Makwanpur', capacity: 60, image: kulekhaniImg }
+  { name: 'Upper Tamakoshi Hydropower', district: 'Dolakha', capacity: 456, image: upperTamakoshiImg, path: '/hydropower1' },
+  { name: 'Kali Gandaki A Hydropower', district: 'Syangja', capacity: 144, image: kaliGandakiImg, path: '/hydropower2' },
+  { name: 'Middle Marsyangdi Hydropower', district: 'Lamjung', capacity: 70, image: middleMarsyangdiImg, path: '/hydropower3' },
+  { name: 'Chilime Hydropower', district: 'Rasuwa', capacity: 22, image: chilimeImg, path: '/hydropower4' },
+  { name: 'Kulekhani I Hydropower', district: 'Makwanpur', capacity: 60, image: kulekhaniImg, path: '/hydropower5' }
 ];
 
 // Map fixed data to their district coordinates
 const MARKERS = MARKERS_DATA.map((data, index) => {
   const districtObj = DISTRICTS.find(d => d.name === data.district) || DISTRICTS[0];
   return {
-    id: `hydro-${index}`,
+    id: `hydro-${index + 1}`,
     name: data.name,
     district: data.district,
     capacity: data.capacity,
     image: data.image,
+    path: data.path,
     cx: districtObj.cx,
     cy: districtObj.cy,
   };
@@ -77,11 +79,13 @@ const MARKERS = MARKERS_DATA.map((data, index) => {
 
 const Nepal: React.FC = () => {
   const [hoveredMark, setHoveredMark] = useState<typeof MARKERS[0] | null>(null);
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col items-center p-6 sm:p-8 w-full min-h-screen bg-white">
       <div className="mb-6 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">Nepal Hydropower Map</h2>
+        <p className="text-sm text-gray-500 font-medium">Click on any hydropower project marker to view detailed information</p>
       </div>
       
       <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 w-full max-w-7xl">
@@ -121,6 +125,7 @@ const Nepal: React.FC = () => {
                   style={{ transformOrigin: `${mark.cx}px ${mark.cy}px` }}
                   onMouseEnter={() => setHoveredMark(mark)}
                   onMouseLeave={() => setHoveredMark(null)}
+                  onClick={() => navigate(mark.path)}
                 >
                   <circle cx={mark.cx} cy={mark.cy} r={10} fill="#ef4444" stroke="white" strokeWidth={3} />
                   <circle cx={mark.cx} cy={mark.cy} r={4} fill="white" />
@@ -132,11 +137,14 @@ const Nepal: React.FC = () => {
           {/* Tooltip positioned near the hovered marker */}
           {hoveredMark && (
             <div 
-              className="absolute bg-white rounded-xl shadow-2xl border border-gray-100 z-10 w-64 pointer-events-none overflow-hidden transition-all duration-200"
+              className="absolute bg-white rounded-xl shadow-2xl border border-gray-100 z-10 w-64 pointer-events-auto cursor-pointer overflow-hidden transition-all duration-200 hover:scale-105"
               style={{ 
                 left: `calc(${(hoveredMark.cx / 1200) * 100}% + 15px)`, 
                 top: `calc(${(hoveredMark.cy / 800) * 100}% - 40px)` 
               }}
+              onMouseEnter={() => setHoveredMark(hoveredMark)}
+              onMouseLeave={() => setHoveredMark(null)}
+              onClick={() => navigate(hoveredMark.path)}
             >
               <img 
                 src={hoveredMark.image} 
@@ -154,6 +162,10 @@ const Nepal: React.FC = () => {
                 <p className="text-sm text-gray-500 font-medium mt-1">
                   <span className="text-gray-400">Capacity:</span> {hoveredMark.capacity} MW
                 </p>
+                <div className="mt-2 text-xs text-red-600 font-semibold flex items-center justify-between border-t border-gray-50 pt-2">
+                  <span>View Details</span>
+                  <span>→</span>
+                </div>
               </div>
             </div>
           )}
@@ -193,6 +205,7 @@ const Nepal: React.FC = () => {
                 }`}
                 onMouseEnter={() => setHoveredMark(mark)}
                 onMouseLeave={() => setHoveredMark(null)}
+                onClick={() => navigate(project.path)}
               >
                 <span className={`w-3 h-3 bg-red-500 rounded-full inline-block flex-shrink-0 transition-transform ${
                   isHovered ? 'scale-125' : ''
